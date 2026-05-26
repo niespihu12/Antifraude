@@ -7,7 +7,6 @@ import {
   GitBranch,
   MessageCircle,
   PieChart,
-  Sparkles,
   type LucideIcon,
 } from "lucide-react";
 
@@ -17,9 +16,7 @@ import { AlertsTable } from "@/components/alerts-table";
 import { BeforeAfterComparison } from "@/components/before-after-comparison";
 import { GlobalFilters } from "@/components/global-filters";
 import { KpiCards } from "@/components/kpi-cards";
-import { SimulationPanel } from "@/components/simulation-panel";
 import { StateDistributionCard } from "@/components/state-distribution-card";
-import { WhatsAppPreview } from "@/components/whatsapp-preview";
 
 function RevealSection({
   children,
@@ -120,18 +117,6 @@ export function DashboardView() {
               </div>
             </div>
           </aside>
-        </div>
-      </RevealSection>
-
-      <RevealSection>
-        <ViewEyebrow
-          icon={Sparkles}
-          title="Automatización en Acción"
-          subtitle="Secuencia To-Be y conversación de validación con Kari AI"
-        />
-        <div className="grid gap-4 xl:grid-cols-[minmax(0,0.95fr)_minmax(360px,0.55fr)]">
-          <SimulationPanel />
-          <WhatsAppPreview />
         </div>
       </RevealSection>
 

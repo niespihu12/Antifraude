@@ -6,10 +6,12 @@ import {
   LayoutDashboard,
   Monitor,
   Network,
+  Sparkles,
   type LucideIcon,
 } from "lucide-react";
 import { useEffect, useState } from "react";
 
+import { AutomationDemoView } from "@/components/automation-demo-view";
 import { DashboardView } from "@/components/dashboard-view";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
@@ -20,10 +22,11 @@ import { PresentationModal } from "@/components/presentation-modal";
 import { SistemasView } from "@/components/sistemas-view";
 import { StatusLegendBar } from "@/components/status-legend-bar";
 
-export type View = "dashboard" | "pipeline" | "sistemas" | "metricas" | "ontologia";
+export type View = "dashboard" | "pipeline" | "sistemas" | "metricas" | "ontologia" | "demo";
 
 const views: { id: View; label: string; icon: LucideIcon }[] = [
   { id: "dashboard", label: "Dashboard", icon: LayoutDashboard },
+  { id: "demo", label: "Automatización en Acción", icon: Sparkles },
   { id: "pipeline", label: "Pipeline", icon: GitBranch },
   { id: "sistemas", label: "Sistemas", icon: Monitor },
   { id: "metricas", label: "Métricas", icon: BarChart3 },
@@ -81,6 +84,8 @@ function ActiveView({ view }: { view: View }) {
   switch (view) {
     case "pipeline":
       return <PipelineView />;
+    case "demo":
+      return <AutomationDemoView />;
     case "sistemas":
       return <SistemasView />;
     case "metricas":
