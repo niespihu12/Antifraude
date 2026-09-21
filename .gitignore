@@ -40,6 +40,9 @@ yarn-error.log*
 # screenshots
 screenshots/
 
+# playwright mcp scratch (capturas y logs locales del agente)
+.playwright-mcp/
+
 # vercel
 .vercel
 

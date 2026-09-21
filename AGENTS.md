@@ -29,6 +29,7 @@ npm run dev         # localhost:3000
 npm run build       # production build (includes type checking via Next)
 npm run lint        # ESLint (eslint-config-next)
 npx tsc --noEmit    # standalone type check
+node scripts/verificar-agentes.mjs  # Fase 3: integrity/anchors check for the «Agentes» tab (81 cases, no browser)
 ```
 
 `npm run build` runs type checking as part of the Next.js build pipeline.
@@ -78,7 +79,8 @@ src/
   data/
     agentes-data.ts       → AGENTES, SISTEMAS, generarDatos / generarPlan / generarCaso (deterministic per seq), ESCENAS
     agentes-util.ts       → formatPeso, faseDeEstado, thresholds (UMBRAL_ALTO_RIESGO, SLA_MIN, REINTENTO_MIN)
-    guiones/              → Interface scripts per window (step id → vista + cursor actions + thought); Fase 2 fills them
+    guiones/              → Interface scripts per window (step id → vista + cursor actions + thought), fully built.
+                            Each system has its `-datos.ts` (anchors, timings, per-step config); helpers in `guiones.ts`.
   types/
     index.ts              → Domain types (EstadoAlerta, Franquicia, Alerta, etc.)
     agentes.ts            → Agents types (AgenteId, Caso, PasoPlan, AccionUI, DatosCaso…)

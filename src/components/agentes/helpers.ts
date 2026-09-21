@@ -46,13 +46,20 @@ export function formatDuracion(ms: number): string {
   return `${String(m).padStart(2, "0")}:${String(s % 60).padStart(2, "0")}`;
 }
 
+// Hora de Bogotá (UTC−5 todo el año), igual que el resto del simulador y sin depender de la zona del navegador.
 const FMT_HORA = new Intl.DateTimeFormat("es-CO", {
+  timeZone: "America/Bogota",
   hour12: false,
   hour: "2-digit",
   minute: "2-digit",
   second: "2-digit",
 });
-const FMT_HM = new Intl.DateTimeFormat("es-CO", { hour12: false, hour: "2-digit", minute: "2-digit" });
+const FMT_HM = new Intl.DateTimeFormat("es-CO", {
+  timeZone: "America/Bogota",
+  hour12: false,
+  hour: "2-digit",
+  minute: "2-digit",
+});
 
 export function horaCorta(t: number): string {
   return FMT_HORA.format(t);
