@@ -87,7 +87,7 @@ interface WAMsg {
 }
 
 const WA_CHAT: WAMsg[] = [
-  { sender: "bank", text: "🔔 Banco de Bogotá Alertas\n\nHola María González, detectamos una actividad inusual en tu tarjeta Visa terminada en 1234.", timeMs: 10000 },
+  { sender: "bank", text: "🔔 Centro de Operaciones Antifraude\n\nHola María González, detectamos una actividad inusual en tu tarjeta Visa terminada en 1234.", timeMs: 10000 },
   { sender: "bank", text: "📍 Comercio: Apple Store\n💰 Monto: $2.450.000 COP\n🌎 Ubicación: Nueva York, USA\n📅 Fecha: Hoy, 14:23", timeMs: 10400 },
   { sender: "bank", text: "¿Reconoces esta transacción?\nResponde SÍ si fuiste tú o NO si no la reconoces.", timeMs: 10800 },
   { sender: "client", text: "Sí fui yo", timeMs: 15200 },
@@ -650,7 +650,7 @@ export function AutomationDemoView() {
                 <Shield className="size-3.5" />
               </div>
               <div className="flex-1">
-                <p className="text-[13px] font-medium text-white">Banco de Bogotá</p>
+                <p className="text-[13px] font-medium text-white">Centro de Operaciones</p>
                 <p className="text-[10px] text-slate-400">Alertas · Kari AI</p>
               </div>
               <div className="flex items-center gap-1.5 text-slate-400">

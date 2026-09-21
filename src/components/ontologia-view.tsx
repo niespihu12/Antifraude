@@ -308,7 +308,7 @@ const FRANQUICIA_TREE = [
     label: "MONITOR",
     pct: "~15%",
     color: "border-slate-200 bg-slate-100 text-slate-600",
-    desc: "Motor interno BdB",
+    desc: "Motor interno del banco",
     children: [],
   },
 ];
@@ -515,7 +515,7 @@ const GLOSARIO = [
   },
   {
     term: "Monitor",
-    def: "Motor interno del Banco de Bogotá para detección de alertas.",
+    def: "Motor interno del banco para detección de alertas.",
   },
   {
     term: "Kari AI",
@@ -1472,7 +1472,7 @@ export function OntologiaView() {
               Ontología del Proceso
             </h1>
             <p className="text-sm text-slate-500">
-              Modelo completo del dominio de Alertas Antifraude — Banco de Bogotá
+              Modelo completo del dominio de Alertas Antifraude
             </p>
           </div>
         </div>

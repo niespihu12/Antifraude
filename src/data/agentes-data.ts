@@ -523,7 +523,7 @@ export function generarDatos(seq: number, franquicia: Franquicia, escenario: Esc
   const analista = pick(rand, ANALISTAS);
 
   const mensajes = [
-    `🔔 Banco de Bogotá Alertas\n\nHola ${primerNombre}, detectamos una actividad inusual en tu tarjeta ${esVisa ? "Visa " : franquicia === Franquicia.MASTERCARD ? "Mastercard " : ""}terminada en ${ultimos4}.`,
+    `🔔 Centro de Operaciones Antifraude\n\nHola ${primerNombre}, detectamos una actividad inusual en tu tarjeta ${esVisa ? "Visa " : franquicia === Franquicia.MASTERCARD ? "Mastercard " : ""}terminada en ${ultimos4}.`,
     `📍 Comercio: ${comercio.nombre}\n💰 Monto: ${formatPeso(monto)} COP\n🌎 Ubicación: ${comercio.ciudad}, ${comercio.pais}\n📅 Fecha: Hoy, ${hhmm(fechaHora)}`,
     "¿Reconoces esta transacción?\nResponde SÍ si fuiste tú o NO si no la reconoces.",
   ];

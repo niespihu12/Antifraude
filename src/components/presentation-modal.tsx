@@ -398,7 +398,7 @@ export function PresentationModal({
         <div className="flex items-center justify-center gap-2 border-t border-[var(--border-subtle)] px-6 py-2">
           <Bot className="size-3.5 text-slate-600" />
           <p className="text-[11px] uppercase tracking-wider text-slate-600">
-            Banco de Bogotá · Orquestador Antifraude · ESC para salir
+            Centro de Operaciones Antifraude · Orquestador · ESC para salir
           </p>
         </div>
       </motion.div>

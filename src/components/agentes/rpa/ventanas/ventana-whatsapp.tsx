@@ -24,8 +24,8 @@ import { Dato } from "./comun";
 import { BarraSLA, LineaReintento, Ticks, estadoSLA, formatT } from "./kari-piezas";
 
 /**
- * Teléfono del titular durante las esperas humanas (c3 y c5): mockup vertical con el chat de «Banco de Bogotá
- * Alertas». Llegan los tres mensajes del HSM, el titular los lee y responde «Sí fui yo» / «No fui yo» (o no
+ * Teléfono del titular durante las esperas humanas (c3 y c5): mockup vertical con el chat de «Centro de
+ * Operaciones Antifraude». Llegan los tres mensajes del HSM, el titular los lee y responde «Sí fui yo» / «No fui yo» (o no
  * responde), y al final aparece el cierre del bot. El reloj del teléfono es la hora del envío más los minutos
  * simulados que deriva `lineaHSM` del progreso del paso; nada avanza solo. A los lados, dos rótulos del
  * simulador (fuera del teléfono) con el titular y el SLA.
@@ -150,7 +150,7 @@ function VentanaWhatsapp({ caso, vista, paso, progreso, velocidad, actor, medir,
                 <Landmark className="w-2.5 h-2.5" />
               </span>
               <div className="min-w-0 leading-none">
-                <div className="truncate text-[9px] font-semibold">Banco de Bogotá Alertas</div>
+                <div className="truncate text-[9px] font-semibold">Centro de Operaciones Antifraude</div>
                 <div className="mt-0.5 text-[7.5px] text-emerald-100">
                   {botEscribe ? "escribiendo…" : "Cuenta de empresa"}
                 </div>

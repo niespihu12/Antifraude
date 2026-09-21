@@ -137,7 +137,7 @@ export default function Expediente({ snap, maximizada, onToggle }: Props) {
             {/* Encabezado tipo documento */}
             <div className="flex items-start justify-between gap-3 border-b-2 border-slate-800 pb-2">
               <div>
-                <div className="text-[9px] uppercase tracking-[0.2em] text-slate-500">Banco de Bogotá · Antifraude</div>
+                <div className="text-[9px] uppercase tracking-[0.2em] text-slate-500">Centro de Operaciones Antifraude</div>
                 <div className="text-[14px] font-bold text-slate-900 leading-tight mt-0.5">
                   Expediente {d.expediente.numero}
                 </div>

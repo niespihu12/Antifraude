@@ -242,7 +242,7 @@ export function SistemasView() {
           </h1>
         </div>
         <p className="mt-1 text-xs uppercase tracking-wider text-slate-500">
-          Estado en tiempo real de los aplicativos del Banco de Bogotá
+          Estado en tiempo real de los aplicativos de la plataforma
         </p>
       </div>
 

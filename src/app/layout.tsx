@@ -16,14 +16,14 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "BdB Antifraude | Centro de Operaciones",
+  title: "Centro de Operaciones Antifraude",
   description:
-    "Demo cinematográfica de automatización inteligente de alertas transaccionales para el Banco de Bogotá. Proceso 100% automatizado con orquestador central, bots inteligentes y dashboard en tiempo real.",
+    "Demo cinematográfica de automatización inteligente de alertas transaccionales. Proceso 100% automatizado con orquestador central, bots inteligentes y dashboard en tiempo real.",
   keywords:
-    "Banco de Bogotá, antifraude, automatización, RPA, bots inteligentes, orquestador, alertas transaccionales, fraude bancario, IA",
+    "antifraude, automatización, RPA, bots inteligentes, orquestador, alertas transaccionales, fraude bancario, IA",
   authors: [{ name: "Américas SIM" }],
   openGraph: {
-    title: "BdB Antifraude | Centro de Operaciones",
+    title: "Centro de Operaciones Antifraude",
     description: "Automatización inteligente de alertas transaccionales",
     type: "website",
   },

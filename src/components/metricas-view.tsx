@@ -117,7 +117,7 @@ export function MetricasView() {
             </h1>
           </div>
           <p className="mt-1 text-xs uppercase tracking-wider text-slate-500">
-            Rendimiento del proceso de alertas antifraude — Banco de Bogotá
+            Rendimiento del proceso de alertas antifraude
           </p>
         </div>
 

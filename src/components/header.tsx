@@ -42,9 +42,9 @@ export function Header({
           </div>
           <div className="hidden leading-tight sm:block">
             <p className="text-lg font-bold tracking-tight text-[#0033A0]">
-              Banco de Bogotá
+              Centro de Operaciones Antifraude
             </p>
-            <p className="text-xs text-slate-500">Centro de Operaciones Antifraude</p>
+            <p className="text-xs text-slate-500">Automatización inteligente de alertas</p>
           </div>
         </div>
 

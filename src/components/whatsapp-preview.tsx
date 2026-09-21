@@ -61,7 +61,7 @@ function ChatInterface({ children }: { children: React.ReactNode }) {
         </div>
         <div className="flex flex-1 flex-col">
           <div className="flex items-center gap-1.5">
-            <span className="text-sm font-semibold text-white">Banco de Bogotá</span>
+            <span className="text-sm font-semibold text-white">Centro de Operaciones</span>
             <BadgeCheck className="size-4 text-emerald-400" />
           </div>
           <span className="text-[11px] text-slate-400">Alertas de Seguridad</span>
