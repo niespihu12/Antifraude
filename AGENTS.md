@@ -44,7 +44,12 @@ src/
     layout.tsx            → Root layout: Inter + JetBrains Mono fonts, AnimatedBackground
     globals.css           → Tailwind v4 @theme inline + CSS variables + custom utils
   components/
-    app-shell.tsx          → Hash routing, nav tabs (5 views), PresentationModal
+    app-shell.tsx          → Hash routing, nav tabs (7 views), PresentationModal
+    agentes-view.tsx       → «Agentes» tab: KPIs, cinta, cola, estación, bitácora, expediente, teatro, atajos
+    agentes/               → Tab components (kebab-case): estacion, cinta-agentes, bandeja, bitacora, expediente,
+                             director-escena, superficie-generica, guion.ts (pure helpers), helpers.ts, ui.tsx
+      rpa/                 → RPA desktop: escritorio-rpa, ventana-sistema (frame), cursor-agente, dialogo-sistema, toast, cromo.ts
+        ventanas/          → One screen per system (monitor, franquicia = BRM/EMS, crm, revision, kari, whatsapp, ppe, expediente)
     header.tsx             → Fixed header: logo, sim controls, live clock
     global-filters.tsx     → Global filter bar (franchise/urgent/fraud) + play/pause
     kpi-cards.tsx          → 6 KPI cards with SVG sparklines
@@ -69,12 +74,20 @@ src/
       button.tsx           → Single shadcn button (uses @base-ui/react primitives)
   context/
     simulation-context.tsx → Central simulation engine: ticks, alerts, metrics, logs, filters
+    agentes-bridge.tsx     → Connects the agents engine to SimulationContext (play/pause/stop, speed, pipeline rows)
+  data/
+    agentes-data.ts       → AGENTES, SISTEMAS, generarDatos / generarPlan / generarCaso (deterministic per seq), ESCENAS
+    agentes-util.ts       → formatPeso, faseDeEstado, thresholds (UMBRAL_ALTO_RIESGO, SLA_MIN, REINTENTO_MIN)
+    guiones/              → Interface scripts per window (step id → vista + cursor actions + thought); Fase 2 fills them
   types/
     index.ts              → Domain types (EstadoAlerta, Franquicia, Alerta, etc.)
+    agentes.ts            → Agents types (AgenteId, Caso, PasoPlan, AccionUI, DatosCaso…)
   lib/
     mock-data.ts          → Mock data for BdB process
     utils.ts              → cn(), formatCOP(), formatNumber(), formatBogotaTime()
-  hooks/                  → (empty, reserved by shadcn config)
+    agentes-engine.ts     → Discrete agents engine (singleton, useSyncExternalStore store, window.__agentes for debugging)
+  hooks/
+    use-agentes.ts        → useAgentes(): snapshot of the agents engine
 ```
 
 `@/` alias maps to `src/` (tsconfig paths).
@@ -112,7 +125,7 @@ recepcion → identificacion → comunicacion → decision → registro
 
 ### Key constraint
 
-- **NEVER** create `setInterval` anywhere except the context. The `useEffect` in `SimulationProvider` is the single timer.
+- **NEVER** create `setInterval` in components. There are exactly two timers: the `useEffect` in `SimulationProvider` (alert simulation) and `lib/agentes-engine.ts` (agents engine, one 100 ms interval × speed). Agent-tab visuals are pure functions of step progress: no timers or self-advancing state in components.
 - Consume via `const { … } = useSimulation()`. It throws if called outside provider.
 - `useSimulation()` always used in `"use client"` components.
 - `suppressHydrationWarning` on `<html>` and `<body>` is intentional — the clock and simulation data differ between server and client renders.
@@ -121,11 +134,13 @@ recepcion → identificacion → comunicacion → decision → registro
 
 ## Hash Routing
 
-5 views in `app-shell.tsx`:
+7 views in `app-shell.tsx`:
 
 | Hash | View | Component |
 |---|---|---|
 | `#/dashboard` | Default | `DashboardView` |
+| `#/demo` | Automation walkthrough | `AutomationDemoView` |
+| `#/agentes` | Live agents team | `AgentesView` |
 | `#/pipeline` | Pipeline | `PipelineView` |
 | `#/sistemas` | 7 systems | `SistemasView` |
 | `#/metricas` | Analytics | `MetricasView` |

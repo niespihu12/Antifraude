@@ -53,7 +53,7 @@ export function StatusLegendBar() {
   const { lastTickAtMs, metrics } = useSimulation();
 
   return (
-    <aside className="fixed bottom-0 left-0 right-0 z-40 h-14 border-t border-slate-200 bg-white/95 px-4 shadow-sm backdrop-blur-md lg:px-6">
+    <aside data-shell="legend" className="fixed bottom-0 left-0 right-0 z-40 h-14 border-t border-slate-200 bg-white/95 px-4 shadow-sm backdrop-blur-md lg:px-6">
       <div className="mx-auto flex h-full max-w-7xl items-center justify-between gap-4">
         <div className="hidden shrink-0 text-xs uppercase tracking-wider text-slate-500 md:block">
           Estados en tiempo real

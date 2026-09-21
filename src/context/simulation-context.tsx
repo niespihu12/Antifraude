@@ -44,7 +44,11 @@ export interface ActivityLog {
   fromPhase?: FaseProcesoKey;
 }
 
+/** «agentes»: la alerta la lleva el equipo de agentes (pestaña Agentes) y avanza por su motor, no al azar. */
+export type OrigenAlertaSim = "simulacion" | "agentes";
+
 export type SimulationAlert = Alerta & {
+  origen?: OrigenAlertaSim;
   fase: FaseProcesoKey;
   createdAtMs: number;
   phaseChangedAtMs: number;
@@ -94,6 +98,10 @@ interface SimulationContextValue {
   pauseSimulation: () => void;
   stopSimulation: () => void;
   toggleRunning: () => void;
+  /** Registra en el pipeline una alerta que gestionan los agentes (reemplaza la del mismo id). */
+  agregarAlerta: (alerta: SimulationAlert) => void;
+  /** Cambia el estado y la fase de una alerta de los agentes y deja la huella en la actividad reciente. */
+  avanzarAlerta: (id: string, estado: EstadoAlerta, fase: FaseProcesoKey, mensaje: string, t: number) => void;
 }
 
 export const phaseOrder = [
@@ -362,6 +370,22 @@ function buildMoveLogs(
   return [baseLog];
 }
 
+function logTypeForEstado(estado: EstadoAlerta, fraude: boolean): ActivityLogType {
+  switch (estado) {
+    case EstadoAlerta.WHATSAPP_ENVIADO:
+      return "whatsapp_sent";
+    case EstadoAlerta.DESBLOQUEADO:
+      return "unblocked";
+    case EstadoAlerta.BLOQUEO_PREVENTIVO:
+    case EstadoAlerta.BLOQUEO_DEFINITIVO:
+      return "blocked";
+    case EstadoAlerta.TIPIFICADO:
+      return fraude ? "blocked" : "resolved";
+    default:
+      return "moved";
+  }
+}
+
 function limitAlerts(alerts: SimulationAlert[]): SimulationAlert[] {
   if (alerts.length <= MAX_ALERTS) {
     return alerts;
@@ -424,7 +448,7 @@ function runSimulationTick(state: SimulationCoreState): SimulationCoreState {
   }
 
   alerts = alerts.map((alert) => {
-    if (alert.id === generatedAlertId || alert.fase === "registro") {
+    if (alert.id === generatedAlertId || alert.fase === "registro" || alert.origen === "agentes") {
       return alert;
     }
 
@@ -585,6 +609,92 @@ export function SimulationProvider({ children }: { children: ReactNode }) {
     setState((current) => ({ ...current, isRunning: !current.isRunning }));
   }, []);
 
+  const agregarAlerta = useCallback((alerta: SimulationAlert) => {
+    setState((current) => ({
+      ...current,
+      allAlerts: limitAlerts([alerta, ...current.allAlerts.filter((item) => item.id !== alerta.id)]),
+      phaseFlashTokens: {
+        ...current.phaseFlashTokens,
+        recepcion: current.phaseFlashTokens.recepcion + 1,
+      },
+      logs: [
+        {
+          id: `${alerta.id}-created`,
+          timestamp: new Date(alerta.createdAtMs),
+          type: "created" as const,
+          alertId: alerta.id,
+          phase: "recepcion" as const,
+          message: `Alerta ${alerta.id} generada en ${alerta.area}`,
+        },
+        ...current.logs,
+      ].slice(0, MAX_LOGS),
+    }));
+  }, []);
+
+  const avanzarAlerta = useCallback(
+    (id: string, estado: EstadoAlerta, fase: FaseProcesoKey, mensaje: string, t: number) => {
+      setState((current) => {
+        const previous = current.allAlerts.find((item) => item.id === id);
+
+        if (!previous) {
+          return current;
+        }
+
+        const isFraud =
+          estado === EstadoAlerta.BLOQUEO_PREVENTIVO || estado === EstadoAlerta.BLOQUEO_DEFINITIVO
+            ? true
+            : estado === EstadoAlerta.DESBLOQUEADO
+              ? false
+              : previous.isFraud;
+        const next: SimulationAlert = {
+          ...previous,
+          estado,
+          fase,
+          isFraud,
+          phaseChangedAtMs: t,
+          flashToken: previous.flashToken + 1,
+        };
+        const newLogs: ActivityLog[] = [];
+
+        if (previous.fase !== fase) {
+          newLogs.push({
+            id: `${id}-${fase}-${t}-moved`,
+            timestamp: new Date(t),
+            type: "moved",
+            alertId: id,
+            fromPhase: previous.fase,
+            phase: fase,
+            message: `Alerta ${id} avanzó de ${phaseLabels[previous.fase]} a ${phaseLabels[fase]}`,
+          });
+        }
+
+        const type = logTypeForEstado(estado, isFraud);
+
+        if (type !== "moved") {
+          newLogs.push({
+            id: `${id}-${estado}-${t}`,
+            timestamp: new Date(t + 1),
+            type,
+            alertId: id,
+            phase: fase,
+            message: `Alerta ${id} · ${mensaje}`,
+          });
+        }
+
+        return {
+          ...current,
+          allAlerts: current.allAlerts.map((item) => (item.id === id ? next : item)),
+          phaseFlashTokens:
+            previous.fase !== fase
+              ? { ...current.phaseFlashTokens, [fase]: current.phaseFlashTokens[fase] + 1 }
+              : current.phaseFlashTokens,
+          logs: [...newLogs.reverse(), ...current.logs].slice(0, MAX_LOGS),
+        };
+      });
+    },
+    [],
+  );
+
   const alerts = useMemo(
     () => state.allAlerts.filter((alert) => matchesFilter(alert, state.activeFilter)),
     [state.allAlerts, state.activeFilter],
@@ -626,6 +736,8 @@ export function SimulationProvider({ children }: { children: ReactNode }) {
       pauseSimulation,
       stopSimulation,
       toggleRunning,
+      agregarAlerta,
+      avanzarAlerta,
     }),
     [
       state.tick,
@@ -646,6 +758,8 @@ export function SimulationProvider({ children }: { children: ReactNode }) {
       pauseSimulation,
       stopSimulation,
       toggleRunning,
+      agregarAlerta,
+      avanzarAlerta,
     ],
   );
 

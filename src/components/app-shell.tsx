@@ -2,6 +2,7 @@
 
 import {
   BarChart3,
+  Bot,
   GitBranch,
   LayoutDashboard,
   Monitor,
@@ -11,6 +12,7 @@ import {
 } from "lucide-react";
 import { useEffect, useState } from "react";
 
+import { AgentesView } from "@/components/agentes-view";
 import { AutomationDemoView } from "@/components/automation-demo-view";
 import { DashboardView } from "@/components/dashboard-view";
 import { Footer } from "@/components/footer";
@@ -22,11 +24,12 @@ import { PresentationModal } from "@/components/presentation-modal";
 import { SistemasView } from "@/components/sistemas-view";
 import { StatusLegendBar } from "@/components/status-legend-bar";
 
-export type View = "dashboard" | "pipeline" | "sistemas" | "metricas" | "ontologia" | "demo";
+export type View = "dashboard" | "pipeline" | "sistemas" | "metricas" | "ontologia" | "demo" | "agentes";
 
 const views: { id: View; label: string; icon: LucideIcon }[] = [
   { id: "dashboard", label: "Dashboard", icon: LayoutDashboard },
   { id: "demo", label: "Automatización en Acción", icon: Sparkles },
+  { id: "agentes", label: "Agentes", icon: Bot },
   { id: "pipeline", label: "Pipeline", icon: GitBranch },
   { id: "sistemas", label: "Sistemas", icon: Monitor },
   { id: "metricas", label: "Métricas", icon: BarChart3 },
@@ -52,7 +55,7 @@ function setHash(view: View) {
 
 function NavigationTabs({ activeView }: { activeView: View }) {
   return (
-    <nav className="fixed left-0 right-0 top-14 z-40 border-b border-slate-200 bg-white/95 px-4 py-2 shadow-sm backdrop-blur-md lg:px-6">
+    <nav data-shell="tabs" className="fixed left-0 right-0 top-14 z-40 border-b border-slate-200 bg-white/95 px-4 py-2 shadow-sm backdrop-blur-md lg:px-6">
       <div className="mx-auto flex max-w-7xl items-center gap-1 overflow-x-auto">
         {views.map((view) => {
           const Icon = view.icon;
@@ -86,6 +89,8 @@ function ActiveView({ view }: { view: View }) {
       return <PipelineView />;
     case "demo":
       return <AutomationDemoView />;
+    case "agentes":
+      return <AgentesView />;
     case "sistemas":
       return <SistemasView />;
     case "metricas":
@@ -123,8 +128,8 @@ export function AppShell() {
       <Header onPresentationMode={() => setPresentationOpen(true)} />
       <NavigationTabs activeView={activeView} />
 
-      <main className="relative z-10 min-h-screen bg-[var(--bg-base)] px-4 pb-20 pt-[7.25rem] text-[var(--text-primary)] lg:px-6">
-        <div className="mx-auto max-w-7xl">
+      <main data-shell="main" className="relative z-10 min-h-screen bg-[var(--bg-base)] px-4 pb-20 pt-[7.25rem] text-[var(--text-primary)] lg:px-6">
+        <div className={activeView === "agentes" ? "mx-auto max-w-[1920px]" : "mx-auto max-w-7xl"}>
           <ActiveView view={activeView} />
           {activeView === "dashboard" ? <Footer /> : null}
         </div>

@@ -225,3 +225,90 @@
 .animate-cinematic-drift {
   animation: cinematic-radial-drift 20s ease-in-out infinite;
 }
+
+/* ─── Pestaña «Agentes»: escritorio RPA ─── */
+@theme {
+  --animate-caret-blink: caret-blink 1.25s ease-out infinite;
+  --animate-rec-blink: rec-blink 1s ease-in-out infinite;
+  --animate-toast-in: toast-in 220ms ease-out;
+  --animate-slide-in-up: slide-in-up 300ms ease-out;
+  --animate-scale-pulse: scale-pulse 200ms ease-out;
+  --animate-clic-onda: clic-onda 450ms ease-out forwards;
+
+  @keyframes caret-blink {
+    0%,
+    70%,
+    100% {
+      opacity: 1;
+    }
+    20%,
+    50% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes rec-blink {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.2;
+    }
+  }
+
+  @keyframes toast-in {
+    0% {
+      transform: translateX(16px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slide-in-up {
+    0% {
+      transform: translateY(-12px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes scale-pulse {
+    0% {
+      transform: scale(1.02);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  /* Onda del clic del cursor simulado: anillo que se abre y se desvanece. */
+  @keyframes clic-onda {
+    0% {
+      transform: scale(0.4);
+      opacity: 0.7;
+    }
+    100% {
+      transform: scale(1.8);
+      opacity: 0;
+    }
+  }
+}
+
+/* Modo teatro de la pestaña Agentes: sin pestañas, barra de estados ni pie, y con todo el alto para el proyector. */
+html[data-teatro] [data-shell="tabs"],
+html[data-teatro] [data-shell="legend"],
+html[data-teatro] footer {
+  display: none;
+}
+
+html[data-teatro] [data-shell="main"] {
+  padding-top: 4rem;
+  padding-bottom: 0.5rem;
+}
