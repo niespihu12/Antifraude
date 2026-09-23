@@ -3,7 +3,7 @@ import type { EstadoAlerta, Franquicia } from "@/types";
 /* ─── Agentes ─── */
 export type AgenteId = "recepcion" | "identificacion" | "comunicacion" | "decision" | "registro";
 
-export type SistemaId = "monitor" | "brm" | "ems" | "crm" | "kari" | "whatsapp" | "cardinal" | "ppe" | "expediente";
+export type SistemaId = "monitor" | "vrm" | "ems" | "crm" | "kari" | "whatsapp" | "cardinal" | "ppe" | "expediente";
 
 export interface AgenteDef {
   id: AgenteId;
@@ -27,14 +27,14 @@ export interface Humano {
 
 /* ─── Escritorio RPA: guion de interfaz por paso ─── */
 /** Ventana del escritorio: «revision» agrupa las dos listas de chequeo (identificación y riesgo). */
-export type VentanaId = "monitor" | "brm" | "ems" | "crm" | "kari" | "whatsapp" | "revision" | "ppe" | "expediente";
+export type VentanaId = "monitor" | "vrm" | "ems" | "crm" | "kari" | "whatsapp" | "revision" | "ppe" | "expediente";
 
 export type Vista =
   | "monitor.cola"
   | "monitor.detalle"
   | "monitor.sync"
   | "monitor.manual"
-  | "brm.alerta"
+  | "vrm.alerta"
   | "ems.alerta"
   | "crm.cliente"
   | "crm.tipificacion"
@@ -152,13 +152,13 @@ export interface Escena {
 }
 
 /* ─── Datos sintéticos que ven las pantallas ─── */
-export type OrigenAlerta = "Monitor" | "BRM" | "EMS/MS";
+export type OrigenAlerta = "Monitor" | "VRM" | "EMS/MS";
 
 export interface DatosAlerta {
   /** Identificador de la alerta en el sistema de origen. */
   referencia: string;
   origen: OrigenAlerta;
-  sistemaOrigen: "monitor" | "brm" | "ems";
+  sistemaOrigen: "monitor" | "vrm" | "ems";
   canal: string;
   /** Instante en que el origen emitió la alerta. */
   emitidaEn: number;

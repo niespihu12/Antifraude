@@ -41,15 +41,15 @@ const systems: SystemDefinition[] = [
     predicate: (alert) => alert.area === "Monitor",
   },
   {
-    id: "brm",
-    name: "BRM",
+    id: "vrm",
+    name: "VRM",
     description: "Visa Risk Manager",
     icon: CreditCard,
     monthlyVolume: "210.000 alertas/mes",
     metricLabel: "Alertas procesadas hoy",
     load: 64,
     tone: "bg-blue-100 text-blue-700",
-    predicate: (alert) => alert.area === "BRM",
+    predicate: (alert) => alert.area === "VRM",
   },
   {
     id: "ems",

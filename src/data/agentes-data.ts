@@ -39,10 +39,10 @@ export const AGENTES: AgenteDef[] = [
     nombre: "Agente Recepción",
     rol: "Orquestador · recepción y enrutamiento",
     sistema: "monitor",
-    sistemas: ["monitor", "brm", "ems", "ppe"],
+    sistemas: ["monitor", "vrm", "ems", "ppe"],
     color: "#2563eb",
     descripcion:
-      "Recibe la alerta de Monitor, BRM o EMS/MS, normaliza la transacción, la enruta por su canal y evalúa el patrón del cliente.",
+      "Recibe la alerta de Monitor, VRM o EMS/MS, normaliza la transacción, la enruta por su canal y evalúa el patrón del cliente.",
   },
   {
     id: "identificacion",
@@ -93,7 +93,7 @@ export const AGENTES_MAP: Record<AgenteId, AgenteDef> = Object.fromEntries(AGENT
 
 export const SISTEMAS: Record<SistemaId, { nombre: string; color: string }> = {
   monitor: { nombre: "Monitor", color: "#475569" },
-  brm: { nombre: "BRM", color: "#1d4ed8" },
+  vrm: { nombre: "VRM", color: "#1d4ed8" },
   ems: { nombre: "EMS/MS", color: "#dc2626" },
   crm: { nombre: "CRM Banco", color: "#0033a0" },
   kari: { nombre: "Kari AI", color: "#059669" },
@@ -390,10 +390,10 @@ export function generarDatos(seq: number, franquicia: Franquicia, escenario: Esc
 
   /* Alerta */
   const origen: OrigenAlerta =
-    franquicia === Franquicia.VISA ? "BRM" : franquicia === Franquicia.MASTERCARD ? "EMS/MS" : "Monitor";
+    franquicia === Franquicia.VISA ? "VRM" : franquicia === Franquicia.MASTERCARD ? "EMS/MS" : "Monitor";
   const sistemaOrigen =
-    franquicia === Franquicia.VISA ? "brm" : franquicia === Franquicia.MASTERCARD ? "ems" : "monitor";
-  const prefijoRef = origen === "BRM" ? "BRM" : origen === "EMS/MS" ? "EMS" : "MON";
+    franquicia === Franquicia.VISA ? "vrm" : franquicia === Franquicia.MASTERCARD ? "ems" : "monitor";
+  const prefijoRef = origen === "VRM" ? "VRM" : origen === "EMS/MS" ? "EMS" : "MON";
   const referencia = `${prefijoRef}-${anio}${entre(rand, 100000, 999999)}`;
   const canal =
     franquicia === Franquicia.VISA
@@ -658,7 +658,7 @@ export function generarPlan(seq: number, franquicia: Franquicia, escenario: Esce
       paso(
         "r3",
         esVisa
-          ? "Enrutando por canal Visa (BRM)"
+          ? "Enrutando por canal Visa (VRM)"
           : franquicia === Franquicia.MASTERCARD
             ? "Enrutando por canal Mastercard (EMS/MS)"
             : "Clasificando como alerta interna de Monitor",
@@ -1020,7 +1020,7 @@ export const ESCENAS: Escena[] = [
   {
     id: "visa",
     etiqueta: "Alerta Visa",
-    sinopsis: "Origen BRM, canal Visa y score de Cardinal en la revisión de riesgo.",
+    sinopsis: "Origen VRM, canal Visa y score de Cardinal en la revisión de riesgo.",
     franquicia: Franquicia.VISA,
     escenario: "legitima",
     reglas: ["R07"],

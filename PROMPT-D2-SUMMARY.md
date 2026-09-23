@@ -64,7 +64,7 @@
 **Archivo:** `src/components/sistemas-view.tsx`
 
 **Cambios realizados:**
-- ✅ Tabs internos scrollables: Monitor | BRM | EMS/MS | Cardinal | CRM Banco | Kari AI | PPE
+- ✅ Tabs internos scrollables: Monitor | VRM | EMS/MS | Cardinal | CRM Banco | Kari AI | PPE
 - ✅ Estilo tabs: bg-white/[0.08] para activo, text-slate-400 para inactivo
 - ✅ Indicador de estado en cada tab (punto verde/rojo)
 - ✅ Estado simulado: 6 de 7 sistemas Online, 1 Offline

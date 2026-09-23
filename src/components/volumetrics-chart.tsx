@@ -40,7 +40,7 @@ const chartTick = "#64748B";
 
 const franchiseData = [
   { name: "Monitor", value: 320000, fill: "#71717a" },
-  { name: "BRM", value: 210000, fill: "#3b82f6" },
+  { name: "VRM", value: 210000, fill: "#3b82f6" },
   { name: "EMS/MS", value: 125000, fill: "#ef4444" },
   { name: "Cardinal", value: 45000, fill: "#eab308" },
 ];

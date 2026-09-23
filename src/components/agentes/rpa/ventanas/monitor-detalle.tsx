@@ -11,7 +11,7 @@ import { RUTAS, T, avancePaso, camposNormalizados, escalaPatron, rutaDe, tramo }
 import { ChipRegla, Insignia, InsigniaEstado, Tarjeta } from "./monitor-piezas";
 
 const CLASE_ORIGEN: Record<string, string> = {
-  BRM: "bg-blue-100 text-blue-700",
+  VRM: "bg-blue-100 text-blue-700",
   "EMS/MS": "bg-red-100 text-[#E31837]",
   Monitor: "bg-slate-100 text-slate-700",
 };

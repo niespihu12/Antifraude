@@ -54,7 +54,7 @@ export default function Bandeja({ snap }: Props) {
           </div>
           <div className="min-w-0 flex-1">
             <div className="text-[12px] font-semibold text-slate-800 leading-tight">Cola de alertas</div>
-            <div className="text-[10px] font-mono-jetbrains text-slate-400 truncate">Monitor · BRM · EMS/MS</div>
+            <div className="text-[10px] font-mono-jetbrains text-slate-400 truncate">Monitor · VRM · EMS/MS</div>
           </div>
           <div className="text-right">
             <div className="font-mono-jetbrains text-[14px] font-bold text-[#0033A0] leading-none">{activos}</div>

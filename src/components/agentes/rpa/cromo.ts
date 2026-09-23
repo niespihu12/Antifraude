@@ -41,14 +41,14 @@ export const CROMO: Record<VentanaId, Cromo> = {
     icono: Activity,
     corto: "Monitor",
   },
-  brm: {
-    titulo: "BRM · Alertas de fraude Visa",
+  vrm: {
+    titulo: "VRM · Alertas de fraude Visa",
     tipo: "web",
     barra: "#1d4ed8",
     fondo: "#f8fafc",
-    url: "brm.antifraude.corp.local/visa/alertas",
+    url: "vrm.antifraude.corp.local/visa/alertas",
     icono: CreditCard,
-    corto: "BRM",
+    corto: "VRM",
   },
   ems: {
     titulo: "EMS/MS · Alertas de fraude Mastercard",
@@ -116,4 +116,4 @@ export const CROMO: Record<VentanaId, Cromo> = {
 };
 
 /** Orden fijo de la barra de tareas (Expediente solo cuando el agente es Registro; el teléfono del titular nunca). */
-export const ORDEN_TASKBAR: VentanaId[] = ["monitor", "brm", "ems", "crm", "kari", "revision", "ppe"];
+export const ORDEN_TASKBAR: VentanaId[] = ["monitor", "vrm", "ems", "crm", "kari", "revision", "ppe"];

@@ -19,7 +19,7 @@ export type Guion = (c: CtxGuion) => Pick<PasoPlan, "vista" | "ui" | "pensamient
 
 /**
  * Clave del guion: `id` del paso (i2, c3, d3_desbloqueo…) o `${franquicia}:${id}`
- * cuando el mismo id abre otra pantalla según la franquicia (VISA:r1 → BRM, MASTERCARD:r1 → EMS/MS).
+ * cuando el mismo id abre otra pantalla según la franquicia (VISA:r1 → VRM, MASTERCARD:r1 → EMS/MS).
  */
 export type Guiones = Record<string, Guion>;
 

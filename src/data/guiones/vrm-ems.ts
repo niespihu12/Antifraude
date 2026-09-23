@@ -3,12 +3,12 @@ import type { Guion, Guiones } from "./tipos";
 import { T } from "./monitor-datos";
 
 /**
- * Guiones de las ventanas «brm» (Visa) y «ems» (Mastercard): la alerta tal como llega de la franquicia.
+ * Guiones de las ventanas «vrm» (Visa) y «ems» (Mastercard): la alerta tal como llega de la franquicia.
  * r1 · la alerta entrante se selecciona en la bandeja, se lee y se reconoce (acuse de recibo).
  *
- * Anclas de la ventana (prefijo `brm.` o `ems.`): fila.alerta · campo.referencia · btn.reconocer.
+ * Anclas de la ventana (prefijo `vrm.` o `ems.`): fila.alerta · campo.referencia · btn.reconocer.
  */
-function r1Franquicia(ns: "brm" | "ems", vista: "brm.alerta" | "ems.alerta"): Guion {
+function r1Franquicia(ns: "vrm" | "ems", vista: "vrm.alerta" | "ems.alerta"): Guion {
   return (c) => {
     const { alerta } = c.d;
     const ui: AccionUI[] = [
@@ -34,7 +34,7 @@ function r1Franquicia(ns: "brm" | "ems", vista: "brm.alerta" | "ems.alerta"): Gu
   };
 }
 
-export const brmEms: Guiones = {
-  "VISA:r1": r1Franquicia("brm", "brm.alerta"),
+export const vrmEms: Guiones = {
+  "VISA:r1": r1Franquicia("vrm", "vrm.alerta"),
   "MASTERCARD:r1": r1Franquicia("ems", "ems.alerta"),
 };

@@ -45,14 +45,14 @@ const STEPS: TourStep[] = [
     area: "Monitor / Franquicias",
     icon: Eye,
     description:
-      "Cada mes ingresan ~700.000 alertas transaccionales desde Monitor (interno), BRM (Visa) y EMS/MS (Mastercard). El orquestador central normaliza el evento, asigna franquicia y enruta la alerta al flujo automatizado.",
+      "Cada mes ingresan ~700.000 alertas transaccionales desde Monitor (interno), VRM (Visa) y EMS/MS (Mastercard). El orquestador central normaliza el evento, asigna franquicia y enruta la alerta al flujo automatizado.",
     actions: [
-      "Recibir alerta desde Monitor, BRM o EMS/MS",
+      "Recibir alerta desde Monitor, VRM o EMS/MS",
       "Normalizar monto, tarjeta y comercio",
       "Clasificar franquicia y severidad",
       "Encolar en el orquestador central",
     ],
-    systems: ["Monitor", "BRM (Visa)", "EMS/MS (Mastercard)"],
+    systems: ["Monitor", "VRM (Visa)", "EMS/MS (Mastercard)"],
     duration: "~7 min por alerta",
     insight:
       "Solo 20.000–30.000 alertas se gestionan hoy de forma operativa; el resto queda sin cobertura automatizada.",

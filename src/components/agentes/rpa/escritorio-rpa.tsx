@@ -11,7 +11,7 @@ import type { PropsVentana } from "./tipos";
 import { CROMO, ORDEN_TASKBAR } from "./cromo";
 import CursorAgente from "./cursor-agente";
 import VentanaMonitor from "./ventanas/ventana-monitor";
-import { VentanaBRM, VentanaEMS } from "./ventanas/ventana-franquicia";
+import { VentanaVRM, VentanaEMS } from "./ventanas/ventana-franquicia";
 import VentanaCRM from "./ventanas/ventana-crm";
 import VentanaRevision from "./ventanas/ventana-revision";
 import VentanaKari from "./ventanas/ventana-kari";
@@ -36,7 +36,7 @@ export interface PropsEscritorio {
 
 const VENTANAS: Record<VentanaId, ComponentType<PropsVentana>> = {
   monitor: VentanaMonitor,
-  brm: VentanaBRM,
+  vrm: VentanaVRM,
   ems: VentanaEMS,
   crm: VentanaCRM,
   revision: VentanaRevision,

@@ -50,7 +50,7 @@ const PHASES: PhaseDef[] = [
   { id: "whatsapp", icon: MessageCircle, label: "WhatsApp HSM", shortLabel: "WhatsApp", desc: "Envía mensaje automático vía Kari AI", startMs: 9500, endMs: 12000, color: "emerald", appLabel: "Kari AI" },
   { id: "espera", icon: Clock, label: "Espera Cliente", shortLabel: "Espera", desc: "Bot espera respuesta...", startMs: 12000, endMs: 16000, color: "amber", appLabel: "Bot Kari" },
   { id: "desbloqueo", icon: Unlock, label: "Desbloqueo", shortLabel: "Desbloqueo", desc: "PPE desbloquea tarjeta vía API", startMs: 16000, endMs: 19000, color: "emerald", appLabel: "PPE" },
-  { id: "registro", icon: ClipboardCheck, label: "Registro", shortLabel: "Registro", desc: "Tipificación automática en todos los sistemas", startMs: 19000, endMs: 22000, color: "blue", appLabel: "Monitor/BRM/EMS" },
+  { id: "registro", icon: ClipboardCheck, label: "Registro", shortLabel: "Registro", desc: "Tipificación automática en todos los sistemas", startMs: 19000, endMs: 22000, color: "blue", appLabel: "Monitor/VRM/EMS" },
 ];
 
 interface LogLine {
@@ -75,7 +75,7 @@ const SYSTEM_LOGS: LogLine[] = [
   { id: 12, text: "Kari AI: respuesta recibida — cliente confirma 'Sí fui yo'", timeMs: 15000, type: "success" },
   { id: 13, text: "PPE: ejecutando desbloqueo de tarjeta ****1234 vía API REST", timeMs: 16200, type: "action" },
   { id: 14, text: "PPE: HTTP 200 OK — desbloqueo exitoso confirmado", timeMs: 17500, type: "success" },
-  { id: 15, text: "Orquestador: registrando tipificación en Monitor, BRM, EMS/MS", timeMs: 19200, type: "info" },
+  { id: 15, text: "Orquestador: registrando tipificación en Monitor, VRM, EMS/MS", timeMs: 19200, type: "info" },
   { id: 16, text: "Sistemas: tipificación 'Falso Positivo' sincronizada", timeMs: 20500, type: "success" },
   { id: 17, text: "Proceso completado: alerta resuelta sin fricción", timeMs: 21500, type: "success" },
 ];

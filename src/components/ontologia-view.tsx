@@ -288,9 +288,9 @@ const FRANQUICIA_TREE = [
     label: "VISA",
     pct: "~45%",
     color: "border-blue-200 bg-blue-100 text-blue-700",
-    desc: "Alertas BRM y Cardinal",
+    desc: "Alertas VRM y Cardinal",
     children: [
-      { label: "BRM", desc: "Visa Risk Manager", color: "text-blue-400" },
+      { label: "VRM", desc: "Visa Risk Manager", color: "text-blue-400" },
       { label: "Cardinal", desc: "Validación 3DS", color: "text-blue-400" },
     ],
   },
@@ -371,7 +371,7 @@ const AREAS_PROCESO = [
     area: "Recepción",
     color: "border-blue-200 bg-blue-100 text-blue-700",
     rol: "Orquestador / Monitor",
-    sistemas: "Monitor, BRM, EMS/MS",
+    sistemas: "Monitor, VRM, EMS/MS",
     actividades: "Normalización y enrutamiento de alertas",
     duracion: "7 min",
   },
@@ -455,7 +455,7 @@ const REGLAS = [
   {
     n: 7,
     regla: "Franquicia Visa",
-    condicion: "Origen BRM o Cardinal",
+    condicion: "Origen VRM o Cardinal",
     accion: "Enrutar por canal Visa",
     severidad: "Operativa",
   },
@@ -506,7 +506,7 @@ const GLOSARIO = [
     def: "Sistema operativo de bloqueo y desbloqueo preventivo de tarjetas.",
   },
   {
-    term: "BRM",
+    term: "VRM",
     def: "Visa Risk Manager — fuente externa de alertas de fraude Visa.",
   },
   {

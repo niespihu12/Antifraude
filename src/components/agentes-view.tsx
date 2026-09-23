@@ -163,7 +163,7 @@ export function AgentesView() {
           </h1>
           {!teatro && (
             <p className={`text-[12px] text-slate-400 mt-0.5 hidden 2xl:block ${SOLO_ALTO}`}>
-              De la alerta de Monitor, BRM o EMS/MS al expediente tipificado: {AGENTES.length} agentes, 7 sistemas, cada
+              De la alerta de Monitor, VRM o EMS/MS al expediente tipificado: {AGENTES.length} agentes, 7 sistemas, cada
               acción documentada.
             </p>
           )}

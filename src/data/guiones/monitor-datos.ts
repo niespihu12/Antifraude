@@ -1,5 +1,5 @@
 /**
- * Datos de pantalla y tiempos compartidos por las consolas de alertas (Monitor, BRM y EMS/MS)
+ * Datos de pantalla y tiempos compartidos por las consolas de alertas (Monitor, VRM y EMS/MS)
  * y por sus guiones. Todo es función pura de `caso.id` y de `caso.datos`: nada de azar ni de
  * reloj. Los tiempos `T` (0–1 del paso) son los mismos que usan los guiones para las acciones,
  * de modo que lo que se ve y lo que el cursor hace nunca se desfasan.
@@ -32,7 +32,7 @@ export const T = {
     confirma: 0.86,
     registrada: 0.92,
   },
-  /** BRM / EMS: r1 de Visa y Mastercard. */
+  /** VRM / EMS: r1 de Visa y Mastercard. */
   fr: { aparece: 0.02, selecciona: 0.16, clicReconocer: 0.56, reconocida: 0.6 },
 } as const;
 
@@ -112,12 +112,12 @@ const ESTADOS_COLA: string[] = [
   EstadoAlerta.DESBLOQUEADO,
 ];
 
-/** Estados propios de la bandeja de una franquicia (BRM / EMS/MS). */
+/** Estados propios de la bandeja de una franquicia (VRM / EMS/MS). */
 export const ESTADOS_BANDEJA = ["Nueva", "Reconocida", "En análisis", "Cerrada"] as const;
 
-const PREFIJO: Record<OrigenAlerta, string> = { Monitor: "MON", BRM: "BRM", "EMS/MS": "EMS" };
+const PREFIJO: Record<OrigenAlerta, string> = { Monitor: "MON", VRM: "VRM", "EMS/MS": "EMS" };
 
-/** Año de la referencia de la alerta («BRM-2026412345» → «2026»). */
+/** Año de la referencia de la alerta («VRM-2026412345» → «2026»). */
 function anioDe(d: DatosCaso): string {
   return /-(\d{4})/.exec(d.alerta.referencia)?.[1] ?? fechaCorta(d.alerta.emitidaEn).slice(-4);
 }
@@ -191,7 +191,7 @@ export function alertasPrevias(id: string, d: DatosCaso, n: number, estados: rea
 /* ─── Contadores de las pestañas de la consola ─── */
 export interface ConteosCola {
   monitor: number;
-  brm: number;
+  vrm: number;
   ems: number;
   /** Alertas del día. */
   hoy: number;
@@ -201,7 +201,7 @@ export function conteosCola(id: string, d: DatosCaso, visibles: number): Conteos
   const rand = rngDe(`${id}|conteos`);
   const c: ConteosCola = {
     monitor: entre(rand, 7, 14),
-    brm: entre(rand, 9, 18),
+    vrm: entre(rand, 9, 18),
     ems: entre(rand, 8, 16),
     hoy: entre(rand, 64, 148),
   };
@@ -233,7 +233,7 @@ export function manualPrevios(id: string, d: DatosCaso, n: number): FilaManual[]
     .slice(6);
   const otros = ANALISTAS_MANUAL.filter((a) => a !== d.analista.nombre);
   const anio = anioDe(d);
-  const origenes: OrigenAlerta[] = ["Monitor", "BRM", "EMS/MS"];
+  const origenes: OrigenAlerta[] = ["Monitor", "VRM", "EMS/MS"];
   return Array.from({ length: n }, (_, i) => {
     const origen = origenes[entre(rand, 0, 2)];
     const monto = entre(rand, 12, 240) * 10_000;
@@ -248,7 +248,7 @@ export function manualPrevios(id: string, d: DatosCaso, n: number): FilaManual[]
   });
 }
 
-/* ─── Bandeja de BRM / EMS/MS ─── */
+/* ─── Bandeja de VRM / EMS/MS ─── */
 export function bandejaFranquicia(id: string, d: DatosCaso, n: number): FilaAlerta[] {
   return alertasPrevias(id, d, n, ["En análisis", "Reconocida", "Reconocida", "Cerrada", "Cerrada"]);
 }
@@ -353,7 +353,7 @@ export type ClaveRuta = "visa" | "mastercard" | "interna";
 
 export const RUTAS: { clave: ClaveRuta; ancla: string; red: string; origen: string; canal: string; regla?: string }[] =
   [
-    { clave: "visa", ancla: "mon.fila.ruta-visa", red: "Visa", origen: "BRM", canal: "Canal Visa", regla: "R07" },
+    { clave: "visa", ancla: "mon.fila.ruta-visa", red: "Visa", origen: "VRM", canal: "Canal Visa", regla: "R07" },
     {
       clave: "mastercard",
       ancla: "mon.fila.ruta-mastercard",
@@ -366,7 +366,7 @@ export const RUTAS: { clave: ClaveRuta; ancla: string; red: string; origen: stri
   ];
 
 export const rutaDe = (d: DatosCaso): ClaveRuta =>
-  d.alerta.origen === "BRM" ? "visa" : d.alerta.origen === "EMS/MS" ? "mastercard" : "interna";
+  d.alerta.origen === "VRM" ? "visa" : d.alerta.origen === "EMS/MS" ? "mastercard" : "interna";
 
 /** Escala de las barras de r4: el umbral de patrón (4× el promedio) y el monto caben siempre. */
 export function escalaPatron(d: DatosCaso) {

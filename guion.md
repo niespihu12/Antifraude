@@ -39,7 +39,7 @@ Toda la demo sigue el mismo ritmo comercial, sección por sección:
 - Tener preparado el **Director de escena** (icono de claqueta en la pestaña Agentes): es la herramienta que convierte la demo de "bonita" en "contada a la medida".
 - Frase de apertura sugerida:
 
-> *"Hoy no les vamos a mostrar un mockup ni una arquitectura en PowerPoint. Les vamos a mostrar el centro de operaciones antifraude funcionando: cinco agentes digitales trabajando en los sistemas que ustedes usan hoy — Monitor, BRM, EMS/MS, CRM, PPE — siguiendo las reglas de su propia operación, alerta por alerta, en tiempo real."*
+> *"Hoy no les vamos a mostrar un mockup ni una arquitectura en PowerPoint. Les vamos a mostrar el centro de operaciones antifraude funcionando: cinco agentes digitales trabajando en los sistemas que ustedes usan hoy — Monitor, VRM, EMS/MS, CRM, PPE — siguiendo las reglas de su propia operación, alerta por alerta, en tiempo real."*
 
 ---
 
@@ -63,11 +63,11 @@ Toda la demo sigue el mismo ritmo comercial, sección por sección:
 
 **Qué decir:**
 
-> *"Todo empieza aquí. Cada mes ingresan al banco cerca de **700.000 alertas transaccionales**, y no por una sola puerta: llegan por **Monitor** (motor interno), por **BRM** cuando es Visa y por **EMS/MS** cuando es Mastercard. Hoy, de esas 700.000, solo entre **20.000 y 30.000** se gestionan operativamente. Lean ese número otra vez: estamos dejando pasar el 96% del volumen — y cada alerta sin gestionar es dinero expuesto y un riesgo regulatorio. Ese es el problema que venimos a cerrar."*
+> *"Todo empieza aquí. Cada mes ingresan al banco cerca de **700.000 alertas transaccionales**, y no por una sola puerta: llegan por **Monitor** (motor interno), por **VRM** (Visa Risk Manager) cuando es Visa y por **EMS/MS** cuando es Mastercard. Hoy, de esas 700.000, solo entre **20.000 y 30.000** se gestionan operativamente. Lean ese número otra vez: estamos dejando pasar el 96% del volumen — y cada alerta sin gestionar es dinero expuesto y un riesgo regulatorio. Ese es el problema que venimos a cerrar."*
 
 **Señalar en pantalla:**
 - Acciones: normalización, clasificación de franquicia, encolado al orquestador.
-- Sistemas: Monitor, BRM, EMS/MS.
+- Sistemas: Monitor, VRM, EMS/MS.
 - **Dato importante** (caja cyan): volumen vs. cobertura actual.
 
 **Transición:** *"Siguiente"* →
@@ -96,7 +96,7 @@ Toda la demo sigue el mismo ritmo comercial, sección por sección:
 
 **Qué decir:**
 
-> *"Aquí cambia el juego — y es donde más dinero se mueve. Hoy la contactabilidad por llamada es menor al 40%: se llaman, no contestan, se cuelga, se repite. **Kari AI** envía un **mensaje HSM transaccional aprobado** por WhatsApp, el canal que el cliente ya usa todos los días, y espera la respuesta: *'¿Fue usted quien realizó esta compra?'* — con reintento automático a los 15 minutos y un SLA de 40. La contactabilidad por este canal ronda el **70%**, y con automatización proyectamos superar el **95%**. Traducción comercial: más casos cerrados en el primer contacto, menos llamadas salientes, menos costo por alerta."*
+> *"Aquí cambia el juego — y es donde más dinero se mueve. Hoy la contactabilidad por llamada es menor al 40%: se llaman, no contestan, se cuelga, se repite. **Kari AI** envía un **mensaje HSM transaccional aprobado** por WhatsApp, el canal que el cliente ya usa todos los días, y espera la respuesta: '¿Fue usted quien realizó esta compra?' — con reintento automático a los 15 minutos y un SLA de 40. La contactabilidad por este canal ronda el **70%**, y con automatización proyectamos superar el **95%**. Traducción comercial: más casos cerrados en el primer contacto, menos llamadas salientes, menos costo por alerta."*
 
 **Señalar en pantalla:**
 - Sistemas: Kari AI, WhatsApp Business.
@@ -180,8 +180,8 @@ Toda la demo sigue el mismo ritmo comercial, sección por sección:
 
 **Cómo conducirlo:** dejar la simulación en **1x–2x** y narrar mientras la estación sigue al agente que trabaja. Si la sala pide ver una etapa específica, usar el Director de escena (1.4) para producir el caso justo.
 
-**Recepción — Monitor, BRM/EMS y PPE:**
-> *"El agente de Recepción ve entrar la alerta en la consola de Monitor — o en la bandeja de BRM si es Visa, EMS/MS si es Mastercard — la reconoce, normaliza los campos uno a uno — comercio, categoría, ciudad, monto, canal — y la enruta. Si el monto se sale del patrón histórico del cliente, aplica **R06** y la marca de alto riesgo; si el riesgo es alto, dispara el **bloqueo preventivo en PPE antes de que termine la recepción** (R02). Lean la secuencia: la tarjeta queda protegida en segundos, no en el siguiente turno de un analista."*
+**Recepción — Monitor, VRM/EMS y PPE:**
+> *"El agente de Recepción ve entrar la alerta en la consola de Monitor — o en la bandeja de VRM si es Visa, EMS/MS si es Mastercard — la reconoce, normaliza los campos uno a uno — comercio, categoría, ciudad, monto, canal — y la enruta. Si el monto se sale del patrón histórico del cliente, aplica **R06** y la marca de alto riesgo; si el riesgo es alto, dispara el **bloqueo preventivo en PPE antes de que termine la recepción** (R02). Lean la secuencia: la tarjeta queda protegida en segundos, no en el siguiente turno de un analista."*
 
 **Identificación — CRM Banco y revisión ítem por ítem:**
 > *"El agente de Identificación abre CRM, teclea la cédula y trae la ficha del titular: celular vigente, ciudad, historial de alertas y desbloqueos previos. Después pasa la revisión **ítem por ítem** — titular, celular, dispositivo, ubicación — como haría un auditor, pero en segundos. Si todo pasa, sigue el flujo. Si el celular no existe en CRM, el control falla con **R01** y el caso escala a monitoreo manual: el robot sabe exactamente cuándo no debe decidir solo. Y si el cliente acumula tres o más desbloqueos legítimos, aplica **R09** y baja su perfil de riesgo: el sistema aprende del propio historial del banco."*
@@ -193,7 +193,7 @@ Toda la demo sigue el mismo ritmo comercial, sección por sección:
 > *"El agente de Decisión repasa los cuatro controles de riesgo: monto contra el patrón histórico, comportamiento, comercio y —solo en Visa— el score de **Cardinal**. Si el titular confirmó, PPE **libera la tarjeta** (R03) con un diálogo de confirmación porque un desbloqueo es un compromiso. Si negó, aplica el **bloqueo definitivo** (R04), irreversible y por eso también confirmado. Cada operación queda con su referencia PPE: trazabilidad de punta a punta."*
 
 **Registro — CRM, Expediente y sincronización:**
-> *"El agente de Registro tipifica el caso en CRM y construye el **expediente digital**: siete secciones que se consolidan una a una — alerta, titular, transacción, comunicación, riesgo, decisión, tipificación — con sello **SHA-256** y acta de cierre estampada: LEGÍTIMA o FRAUDE. Y cierra el ciclo replicando la tipificación en el sistema de origen: si la alerta nació en BRM, BRM queda actualizado. **R12: trazabilidad 24/7.** Cuando la franquicia pregunte por un caso, el banco responde con un documento sellado, no con una búsqueda en Excel."*
+> *"El agente de Registro tipifica el caso en CRM y construye el **expediente digital**: siete secciones que se consolidan una a una — alerta, titular, transacción, comunicación, riesgo, decisión, tipificación — con sello **SHA-256** y acta de cierre estampada: LEGÍTIMA o FRAUDE. Y cierra el ciclo replicando la tipificación en el sistema de origen: si la alerta nació en VRM, VRM queda actualizado. **R12: trazabilidad 24/7.** Cuando la franquicia pregunte por un caso, el banco responde con un documento sellado, no con una búsqueda en Excel."*
 
 ---
 
@@ -311,7 +311,7 @@ Toda la demo sigue el mismo ritmo comercial, sección por sección:
 
 ### 3.1 Swimlanes por sistema
 
-**Qué señalar:** Monitor · BRM · EMS/MS · Cardinal · CRM Banco · Kari AI · PPE.
+**Qué señalar:** Monitor · VRM · EMS/MS · Cardinal · CRM Banco · Kari AI · PPE.
 
 **Qué decir:**
 
@@ -321,7 +321,7 @@ Toda la demo sigue el mismo ritmo comercial, sección por sección:
 
 **Qué decir:**
 
-> *"El supervisor ve en tarjetas para gestionar el día a día, o en lista para auditar y exportar. El color del borde identifica la franquicia al instante; si mañana hay un pico de alertas Visa por BRM, filtran y atacan solo ese carril."*
+> *"El supervisor ve en tarjetas para gestionar el día a día, o en lista para auditar y exportar. El color del borde identifica la franquicia al instante; si mañana hay un pico de alertas Visa por VRM, filtran y atacan solo ese carril."*
 
 **Transición:**
 
@@ -336,13 +336,13 @@ Toda la demo sigue el mismo ritmo comercial, sección por sección:
 ### 4.1 Tabs de sistemas + detalle
 
 **Qué señalar:**
-- Tabs: Monitor | BRM | EMS/MS | Cardinal | CRM Banco | Kari AI | PPE.
+- Tabs: Monitor | VRM | EMS/MS | Cardinal | CRM Banco | Kari AI | PPE.
 - Indicador **Online / Offline** (uno rota como offline cada ~30 seg para simular incidentes).
 - Volumen mensual por sistema, utilización y últimas alertas procesadas.
 
 **Qué decir:**
 
-> *"Un orquestador central solo funciona si los sistemas periféricos responden. Hoy un BRM lento se descubre cuando las alertas se acumulan — es decir, cuando ya le llegó al cliente. Aquí el equipo de operaciones lo vería en segundos, y el orquestador reintentaría, redirigiría o escalaría según la política: **200.000 alertas nunca quedan en limbo por un sistema caído.** Esto es observabilidad de clase enterprise aplicada a fraude transaccional — y es también la respuesta a la objeción de tecnología: no reemplazamos sus sistemas; los **orquestamos y los cuidamos**."*
+> *"Un orquestador central solo funciona si los sistemas periféricos responden. Hoy un VRM lento se descubre cuando las alertas se acumulan — es decir, cuando ya le llegó al cliente. Aquí el equipo de operaciones lo vería en segundos, y el orquestador reintentaría, redirigiría o escalaría según la política: **200.000 alertas nunca quedan en limbo por un sistema caído.** Esto es observabilidad de clase enterprise aplicada a fraude transaccional — y es también la respuesta a la objeción de tecnología: no reemplazamos sus sistemas; los **orquestamos y los cuidamos**."*
 
 **Transición:**
 
@@ -383,7 +383,7 @@ Toda la demo sigue el mismo ritmo comercial, sección por sección:
 - **Entidades y relaciones:** *"Ocho entidades del dominio — alerta, cliente, tarjeta, transacción, mensaje HSM, bloqueo, regla, orquestador — conectadas con cardinalidad. Este es el mapa que el equipo de integración usa para no romper nada en producción."*
 - **Máquina de estados:** *"Ningún caso vaga en un limbo ambiguo: o espera al cliente, o está bloqueado preventivamente, o ya fue tipificado. Ocho estados formales, bandas por fase. Así se audita y así se reporta a regulación sin preguntar '¿en qué quedó ese caso?'"*
 - **Reglas de negocio:** *"Las doce reglas que vieron trabajar en la pestaña Agentes — R01 a R12 —, con severidad y configuración. **No son reglas genéricas de un vendor: son la política de su operación, convertida en software auditable.** Cuando la política cambie, se cambia la regla, no el proceso."*
-- **Glosario:** *"Cerramos con lenguaje común: cuando decimos HSM, PPE o BRM, negocio y tecnología entienden lo mismo."*
+- **Glosario:** *"Cerramos con lenguaje común: cuando decimos HSM, PPE o VRM, negocio y tecnología entienden lo mismo."*
 
 ---
 
@@ -406,7 +406,7 @@ Toda la demo sigue el mismo ritmo comercial, sección por sección:
 >
 > *Lo que vieron no es un concepto ni una maqueta: es el modelo operativo, técnico y de métricas del centro de operaciones antifraude automatizado — ejecutado con las reglas de su propio proceso, ante sus ojos.*
 >
-> *El siguiente paso lo proponemos concreto: un **piloto de 6 a 8 semanas** sobre una franquicia acotada —sugerimos Visa por BRM—, con CRM, PPE y Kari integrados por API, y con cuatro KPIs medibles de entrada: tiempo de ciclo, contactabilidad, falsos positivos y costo por alerta. Nosotros ya tenemos el mapa que vieron hoy. Ustedes tienen el proceso y los datos. **Juntos cerramos la brecha en semanas, no en años.**"*
+> *El siguiente paso lo proponemos concreto: un **piloto de 6 a 8 semanas** sobre una franquicia acotada —sugerimos Visa por VRM—, con CRM, PPE y Kari integrados por API, y con cuatro KPIs medibles de entrada: tiempo de ciclo, contactabilidad, falsos positivos y costo por alerta. Nosotros ya tenemos el mapa que vieron hoy. Ustedes tienen el proceso y los datos. **Juntos cerramos la brecha en semanas, no en años.**"*
 
 ---
 

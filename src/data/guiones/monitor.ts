@@ -10,10 +10,10 @@ import { RUTAS, T, camposNormalizados, contactoAnalista, escalaPatron, rutaDe, t
  * salen de `T` (monitor-datos) para que lo que se ve y lo que hace el cursor coincidan.
  *
  * Anclas de la ventana:
- * · monitor.cola: mon.tab.monitor|brm|ems · mon.fila.alerta · mon.fila.manual · mon.btn.escalar
+ * · monitor.cola: mon.tab.monitor|vrm|ems · mon.fila.alerta · mon.fila.manual · mon.btn.escalar
  * · monitor.detalle: mon.chip.origen · mon.campo.comercio|categoria|ubicacion|monto|canal|fecha ·
  *   mon.fila.ruta-visa|ruta-mastercard|ruta-interna · mon.barra.promedio|monto · mon.chip.patron
- * · monitor.sync: mon.btn.sincronizar · mon.fila.monitor|brm|ems
+ * · monitor.sync: mon.btn.sincronizar · mon.fila.monitor|vrm|ems
  * · monitor.manual: mon.fila.caso · mon.btn.contactar · mon.btn.legitima|fraude · mon.chip.decision · dlg.btn.confirmar
  */
 
@@ -91,7 +91,7 @@ const r3: Guion = (c) => {
   ];
   const pensamiento =
     c.franquicia === Franquicia.VISA
-      ? "La alerta viene de BRM: por ser franquicia Visa la enruto por el canal Visa (R07)."
+      ? "La alerta viene de VRM: por ser franquicia Visa la enruto por el canal Visa (R07)."
       : c.franquicia === Franquicia.MASTERCARD
         ? "La alerta viene de EMS/MS: por ser franquicia Mastercard la enruto por el canal Mastercard (R08)."
         : "Es una alerta interna de Monitor: no pasa por un canal de red, así que la clasifico como interna.";

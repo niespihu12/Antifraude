@@ -17,7 +17,7 @@ export const volumetriaBdB = {
   operacion: "24/7/365",
   sistemas: [
     "Monitor",
-    "BRM (Visa)",
+    "VRM (Visa)",
     "EMS/MS (Mastercard)",
     "Cardinal",
     "CRM Banco",
@@ -131,7 +131,7 @@ export const mockAlerts: Alerta[] = [
     estado: EstadoAlerta.BLOQUEO_PREVENTIVO,
     tiempo: "6 min",
     cliente: "Daniel Esteban Pérez",
-    area: "BRM",
+    area: "VRM",
     fecha: fechaRelativa(6),
   },
   {
@@ -219,7 +219,7 @@ export const mockAlerts: Alerta[] = [
     estado: EstadoAlerta.BLOQUEO_PREVENTIVO,
     tiempo: "8 min",
     cliente: "Felipe Camacho",
-    area: "BRM",
+    area: "VRM",
     fecha: fechaRelativa(8),
   },
   {

@@ -88,7 +88,7 @@ Abrir: http://localhost:3000
 
 ### Tabs con Estado
 **Qué verificar:**
-1. 7 tabs horizontales: Monitor | BRM | EMS/MS | Cardinal | CRM Banco | Kari AI | PPE
+1. 7 tabs horizontales: Monitor | VRM | EMS/MS | Cardinal | CRM Banco | Kari AI | PPE
 2. Cada tab tiene un punto de estado (verde o rojo)
 3. 6 sistemas con punto verde (Online)
 4. 1 sistema con punto rojo (Offline) - rota cada 30 segundos

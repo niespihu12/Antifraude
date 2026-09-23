@@ -6,7 +6,7 @@ import type { PasoPlan } from "@/types/agentes";
 import { AGENTES_MAP } from "@/data/agentes-data";
 
 /**
- * Piezas visuales compartidas por las consolas de alertas (Monitor, BRM y EMS/MS).
+ * Piezas visuales compartidas por las consolas de alertas (Monitor, VRM y EMS/MS).
  * Sin estado: todo es función de las props.
  */
 

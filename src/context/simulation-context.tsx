@@ -262,7 +262,7 @@ function createAlert(sequence: number, now: number): SimulationAlert {
     franquicia === Franquicia.MONITOR
       ? "Monitor"
       : franquicia === Franquicia.VISA
-        ? "BRM"
+        ? "VRM"
         : "EMS/MS";
 
   return {

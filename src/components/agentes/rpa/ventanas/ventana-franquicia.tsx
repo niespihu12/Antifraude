@@ -12,11 +12,11 @@ import VentanaSistema from "../ventana-sistema";
 import { ToastEntrega } from "./comun";
 import { BotonWeb, InsigniaEstado, InsigniaPrioridad, Tarjeta } from "./monitor-piezas";
 
-/** Las dos pieles de la misma pantalla: BRM (Visa, azul) y EMS/MS (Mastercard, granate). Sin logos. */
+/** Las dos pieles de la misma pantalla: VRM (Visa, azul) y EMS/MS (Mastercard, granate). Sin logos. */
 const PIELES = {
-  brm: {
-    prefijo: "brm",
-    sistema: "BRM",
+  vrm: {
+    prefijo: "vrm",
+    sistema: "VRM",
     franquicia: "Visa",
     color: "#1d4ed8",
     borde: "border-blue-200",
@@ -81,7 +81,7 @@ function Linea({ k, children }: { k: string; children: ReactNode }) {
 }
 
 /**
- * BRM (Visa) y EMS/MS (Mastercard) · bandeja de alertas de la franquicia (r1): la alerta entrante
+ * VRM (Visa) y EMS/MS (Mastercard) · bandeja de alertas de la franquicia (r1): la alerta entrante
  * se selecciona, se leen sus datos y el agente la reconoce (acuse de recibo).
  */
 function VentanaFranquicia({
@@ -94,7 +94,7 @@ function VentanaFranquicia({
   actor,
   medir,
   relojSim,
-}: PropsVentana & { ventana: "brm" | "ems" }) {
+}: PropsVentana & { ventana: "vrm" | "ems" }) {
   const piel = PIELES[ventana];
   const ns = piel.prefijo;
   const p = progresoEfectivo(progreso, velocidad);
@@ -239,13 +239,13 @@ function VentanaFranquicia({
   );
 }
 
-function VentanaBRMBase(props: PropsVentana) {
-  return <VentanaFranquicia {...props} ventana="brm" />;
+function VentanaVRMBase(props: PropsVentana) {
+  return <VentanaFranquicia {...props} ventana="vrm" />;
 }
 
 function VentanaEMSBase(props: PropsVentana) {
   return <VentanaFranquicia {...props} ventana="ems" />;
 }
 
-export const VentanaBRM = memo(VentanaBRMBase);
+export const VentanaVRM = memo(VentanaVRMBase);
 export const VentanaEMS = memo(VentanaEMSBase);

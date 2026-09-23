@@ -50,7 +50,7 @@ src/
     agentes/               → Tab components (kebab-case): estacion, cinta-agentes, bandeja, bitacora, expediente,
                              director-escena, superficie-generica, guion.ts (pure helpers), helpers.ts, ui.tsx
       rpa/                 → RPA desktop: escritorio-rpa, ventana-sistema (frame), cursor-agente, dialogo-sistema, toast, cromo.ts
-        ventanas/          → One screen per system (monitor, franquicia = BRM/EMS, crm, revision, kari, whatsapp, ppe, expediente)
+        ventanas/          → One screen per system (monitor, franquicia = VRM/EMS, crm, revision, kari, whatsapp, ppe, expediente)
     header.tsx             → Fixed header: logo, sim controls, live clock
     global-filters.tsx     → Global filter bar (franchise/urgent/fraud) + play/pause
     kpi-cards.tsx          → 6 KPI cards with SVG sparklines

@@ -74,7 +74,7 @@
 
 ### PARTE 5: Sistemas con Tabs y Estado ✅
 - [x] Tabs internos scrollables: 7 sistemas
-- [x] Tabs: Monitor | BRM | EMS/MS | Cardinal | CRM Banco | Kari AI | PPE
+- [x] Tabs: Monitor | VRM | EMS/MS | Cardinal | CRM Banco | Kari AI | PPE
 - [x] Indicador de estado en cada tab (punto verde/rojo size-1.5)
 - [x] Estado simulado: 6 Online, 1 Offline
 - [x] Rotación automática cada 30 segundos (useEffect + setInterval)

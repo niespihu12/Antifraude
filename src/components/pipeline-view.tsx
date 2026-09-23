@@ -34,12 +34,12 @@ const swimlanes: SwimlaneDefinition[] = [
     predicate: (alert) => alert.area === "Monitor",
   },
   {
-    id: "brm",
-    name: "BRM",
+    id: "vrm",
+    name: "VRM",
     subtitle: "Visa Risk Manager",
     icon: PanelsTopLeft,
     color: "text-blue-700 bg-blue-100",
-    predicate: (alert) => alert.area === "BRM",
+    predicate: (alert) => alert.area === "VRM",
   },
   {
     id: "ems",

@@ -11,7 +11,7 @@ import { BotonWeb, Insignia, Tarjeta } from "./monitor-piezas";
 
 const FILAS = [
   { clave: "monitor", nombre: "Monitor", endpoint: CROMO.monitor.url },
-  { clave: "brm", nombre: "BRM", endpoint: CROMO.brm.url },
+  { clave: "vrm", nombre: "VRM", endpoint: CROMO.vrm.url },
   { clave: "ems", nombre: "EMS/MS", endpoint: CROMO.ems.url },
 ] as const;
 

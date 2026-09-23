@@ -22,7 +22,7 @@ const COLUMNAS = "grid grid-cols-[8px_84px_minmax(56px,1fr)_58px_70px_100px] gap
 
 const TABS = [
   { clave: "monitor", etiqueta: "Monitor" },
-  { clave: "brm", etiqueta: "BRM" },
+  { clave: "vrm", etiqueta: "VRM" },
   { clave: "ems", etiqueta: "EMS/MS" },
 ] as const;
 
